@@ -1,4 +1,4 @@
-FROM openjdk:17-jre-slim
+FROM openjdk:17.0.1-jdk-slim
 ARG JAR_FILE=build/libs/signup-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} /app.jar
 
