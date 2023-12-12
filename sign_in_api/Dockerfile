@@ -1,7 +1,17 @@
-FROM openjdk:latest
-ARG JAR_FILE=build/libs/signin-0.0.1-SNAPSHOT.jar
-COPY ${JAR_FILE} /app.jar
-EXPOSE 8080
+FROM openjdk:latest as build
 
+COPY ./gradlew /app/
+COPY ./gradle /app/gradle
+
+COPY . /app/
+
+RUN ./gradlew clean build
+
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+
+COPY --from=build /app/build/libs/sign_in_api-0.0.1-SNAPSHOT.jar /app/
+
+EXPOSE 8080
 
 ENTRYPOINT ["java","-jar","/app.jar"]
