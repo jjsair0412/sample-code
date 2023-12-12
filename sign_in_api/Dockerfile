@@ -1,5 +1,6 @@
 FROM openjdk:latest as build
 
+WORKDIR /app
 COPY ./gradlew /app/
 COPY ./gradle /app/gradle
 
