@@ -14,7 +14,7 @@ RUN ./gradlew clean build
 
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-
+RUN apk update && apk add findutils
 COPY --from=build /app/build/libs/sign_in_api-0.0.1-SNAPSHOT.jar /app/
 
 EXPOSE 8080
