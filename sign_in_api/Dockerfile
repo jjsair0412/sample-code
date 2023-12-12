@@ -5,6 +5,8 @@ COPY ./gradle /app/gradle
 
 COPY . /app/
 
+RUN ls -al
+
 RUN chmod +x ./gradlew
 
 RUN ./gradlew clean build
