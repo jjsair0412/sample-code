@@ -8,9 +8,9 @@ COPY . /app/
 
 RUN ls -al
 
-RUN chmod +x ./app/gradlew
+RUN chmod +x ./gradlew
 
-RUN ./app/gradlew clean build
+RUN ./gradlew clean build
 
 FROM openjdk:17-jdk-slim
 WORKDIR /app
